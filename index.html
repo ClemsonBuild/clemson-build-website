@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="styles/main.css">
     <link href="https://fonts.cdnfonts.com/css/univers-lt-std" rel="stylesheet"></link>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
     <script>
       tailwind.config = {
         theme: {
@@ -15,17 +18,23 @@
               univers: ['"Univers LT Std"', "sans-serif"],
             },
           }
-        }
+        },
+        corePlugins: {
+          preflight: false,
+        },
       }
     </script>
     <style>
       body {
+        color: white;
+        font-family: "Tahoma";
+      }
+
+      .hero {
         background: linear-gradient(-45deg, #ee7752, #e7973c, #ab23d5, #9a23d5);
         background-size: 400% 400%;
         animation: gradient 15s ease infinite;
         height: 100vh;
-        color: white;
-        font-family: "Tahoma";
       }
 
       @keyframes gradient {
@@ -74,37 +83,6 @@
         margin-bottom: 20px;
       }
 
-      img {
-        width: 100%;
-        height: 100%;
-        border-bottom-left-radius: 0px;
-        border-bottom-right-radius: 0px;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-        object-fit: cover;
-      }
-
-      #item-1:checked ~ .cards #project-3, #item-2:checked ~ .cards #project-1, #item-3:checked ~ .cards #project-2 {
-        transform: translatex(-40%) scale(.8);
-        opacity: .4;
-        z-index: 0;
-      }
-
-      #item-1:checked ~ .cards #project-2, #item-2:checked ~ .cards #project-3, #item-3:checked ~ .cards #project-1 {
-        transform: translatex(40%) scale(.8);
-        opacity: .4;
-        z-index: 0;
-      }
-
-      #item-1:checked ~ .cards #project-1, #item-2:checked ~ .cards #project-2, #item-3:checked ~ .cards #project-3 {
-        transform: translatex(0) scale(1);
-        opacity: 1;
-        z-index: 1;
-        
-        img {
-          box-shadow: 0px 0px 5px 0px rgba(81, 81, 81, 0.47);
-        }
-      }
 
       .upper-part {
         position: relative;
@@ -130,59 +108,181 @@
   </head>
   <body>
   <!-- Hero Section -->
-    <div class="mt-56 mx-auto w-fit">
-      <h1 class="text-5xl font-black font-univers text-center max-w-[900px]">A community of builders at Clemson University</h1>
-      <p class="mt-4 mx-auto text-lg font-univers leading-wider text-center max-w-[600px]">Connect with other students leveraging their skills to build and iterate on all different kinds of projects.</p>
-      <div class="mt-8 flex gap-x-4 justify-center">
-        <button class="transition ease-in-out delay-110 hover:-translate-y-1 hover:scale-101 bg-orange-500 shadow-lg rounded-xl font-bold font-univers px-5 py-2 text-lg text-white">
-          Join
-        </button>
-        <button class="transition ease-in-out delay-110 hover:-translate-y-1 hover:scale-101 border border-white shadow-xl rounded-lg font-bold font-univers px-5 py-2 text-lg text-white">
-          Learn More
-        </button>
-      </div>
+    <div class="hero">
+        <div class="pt-56 mx-auto w-fit">
+          <h1 class="text-5xl font-black font-univers text-center max-w-[900px]">A community of builders at Clemson University</h1>
+          <p class="mt-4 mx-auto text-lg font-univers leading-wider text-center max-w-[600px]">Connect with other students leveraging their skills to build and iterate on all different kinds of projects.</p>
+          <div class="mt-8 flex gap-x-4 justify-center">
+            <button class="transition ease-in-out delay-110 hover:-translate-y-1 hover:scale-101 bg-orange-500 shadow-lg rounded-xl font-bold font-univers px-5 py-2 text-lg text-white">
+              Join
+            </button>
+            <button class="transition ease-in-out delay-110 hover:-translate-y-1 hover:scale-101 border border-white shadow-xl rounded-lg font-bold font-univers px-5 py-2 text-lg text-white">
+              Learn More
+            </button>
+          </div>
+        </div>
     </div>
 
   <!-- Featured Projects Section -->
-    <div class="mt-[16.5rem] mx-auto max-w-[1280px] h-[700px]">
-      <div class="container">
-        <input type="radio" name="slider" id="item-1" checked>
-        <input type="radio" name="slider" id="item-2">
-        <input type="radio" name="slider" id="item-3">
-        <div class="cards">
-          <label class="card" for="item-1" id="project-1">
-            <img src="https://i.imgur.com/WvOYL0Z.jpg" alt="project 1">
-            <div class="py-4 bg-black/50 w-full flex-col justify-center rounded-br-[10px] rounded-bl-[10px]">
-              <h3 class="text-2xl font-black font-univers text-center">Stockpile</h3>
-              <p class="mt-2 text-md font-regular font-univers leading-wider text-center">By: Joey Meere</p>
-              <button class="mt-4 mx-auto block transition ease-in-out delay-110 hover:-translate-y-1 hover:scale-101 border border-white shadow-xl rounded-lg font-bold font-univers px-5 py-2 text-sm text-white">
-                View
-              </button>
-            </div>
-          </label>
-          <label class="card" for="item-2" id="project-2">
-            <img src="https://i.imgur.com/vjETozp.jpg" alt="Project 2">
-            <div class="py-4 bg-black/50 w-full flex-col justify-center rounded-br-[10px] rounded-bl-[10px]">
-              <h3 class="text-2xl font-black font-univers text-center">Elytra</h3>
-              <p class="mt-2 text-md font-regular font-univers leading-wider text-center">By: Max Koon</p>
-              <button class="mt-4 mx-auto block transition ease-in-out delay-110 hover:-translate-y-1 hover:scale-101 border border-white shadow-xl rounded-lg font-bold font-univers px-5 py-2 text-sm text-white">
-                View
-              </button>
-            </div>
-          </label>
-          <label class="card" for="item-3" id="project-3">
-            <img src="https://i.imgur.com/IquZXV3.jpg" alt="Project 3">
-            <div class="py-4 bg-black/50 w-full flex-col justify-center rounded-br-[10px] rounded-bl-[10px]">
-              <h3 class="text-2xl font-black font-univers text-center">CUFries</h3>
-              <p class="mt-2 text-md font-regular font-univers leading-wider text-center">By: Max Koon, David Bootle & Joey Meere</p>
-              <button class="mt-4 mx-auto block transition ease-in-out delay-110 hover:-translate-y-1 hover:scale-101 border border-white shadow-xl rounded-lg font-bold font-univers px-5 py-2 text-sm text-white">
-                View
-              </button>
-            </div>
-          </label>
-        </div>
+
+    
+  <div
+  id="carouselExampleCaptions"
+  class="relative"
+  data-te-carousel-init
+  data-te-carousel-slide>
+  <!--Carousel indicators-->
+  <div
+    class="absolute bottom-0 left-0 right-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0"
+    data-te-carousel-indicators>
+    <button
+      type="button"
+      data-te-target="#carouselExampleCaptions"
+      data-te-slide-to="0"
+      data-te-carousel-active
+      class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+      aria-current="true"
+      aria-label="Slide 1"></button>
+    <button
+      type="button"
+      data-te-target="#carouselExampleCaptions"
+      data-te-slide-to="1"
+      class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+      aria-label="Slide 2"></button>
+    <button
+      type="button"
+      data-te-target="#carouselExampleCaptions"
+      data-te-slide-to="2"
+      class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+      aria-label="Slide 3"></button>
+  </div>
+
+  <!--Carousel items-->
+  <div
+    class="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
+    <!--First item-->
+    <div
+      class="relative float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+      data-te-carousel-active
+      data-te-carousel-item
+      style="backface-visibility: hidden">
+        <div style="background-image: url('https://i.imgur.com/WvOYL0Z.jpeg')" class="block w-full h-screen bg-center bg-cover"></div>
+      <div
+        class="absolute w-full left-0 bottom-0 pb-10 text-center text-white block bg-gradient-to-t from-black">
+        <h5 class="text-xl">Stockpile</h5>
+           <p class="mt-2 text-md font-regular font-univers leading-wider text-center">By: Joey Meere</p>
+          <button class="mt-4 mx-auto block transition ease-in-out delay-110 hover:-translate-y-1 hover:scale-101 border border-white shadow-xl rounded-lg font-bold font-univers px-5 py-2 text-sm text-white">
+            View
+          </button>
       </div>
     </div>
+    <!--Second item-->
+    <div
+      class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+      data-te-carousel-item
+      style="backface-visibility: hidden">
+        <div style="background-image: url('https://i.imgur.com/IquZXV3.jpeg')" class="block w-full h-screen bg-center bg-cover"></div>
+      <div
+        class="absolute w-full left-0 bottom-0 pb-10 text-center text-white block bg-gradient-to-t from-black">
+        <h5 class="text-xl">CUFries</h5>
+           <p class="mt-2 text-md font-regular font-univers leading-wider text-center">By: Joey Meere, Max Koon, and David Bootle</p>
+          <button class="mt-4 mx-auto block transition ease-in-out delay-110 hover:-translate-y-1 hover:scale-101 border border-white shadow-xl rounded-lg font-bold font-univers px-5 py-2 text-sm text-white">
+            View
+          </button>
+      </div>
+    </div>
+    <!--Third item-->
+    <div
+      class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+      data-te-carousel-item
+      style="backface-visibility: hidden">
+         <div class="h-screen w-full bg-gradient-to-t from-purple-800 to-black">
+             <div class="absolute bottom-0 w-full">
+                <img class="h-[90vh] block mx-auto ml-[15%]"
+                alt="Demo of a rider and driver app"
+                src="https://elytrarides.com/landing.png" />
+             </div>
+
+             <div class="absolute h-screen w-full">
+                <div class="bg-zinc-900 absolute p-8 rounded w-fit right-[22%] drop-shadow-2xl" style="top: 50%; transform: translateY(-50%)">
+        <h5 class="text-3xl font-bold">Elyra Rides</h5>
+           <p class="mt-2 text-md font-regular font-univers leading-wider text-gray-300">
+           <img class="rounded-full w-6 h-6 mr-1 inline" src="https://i.imgur.com/dI04ReE.jpg" />
+           
+           Max Koon</p>
+           <p class="text-gray-300 mt-4">Easy Driver/Rider communication.</p>
+           <a href="https://elytrarides.com">
+          <button class="mt-4 block transition ease-in-out delay-110 hover:-translate-y-1 hover:scale-101 border border-white shadow-xl rounded-lg font-bold font-univers px-5 py-2 text-sm text-white">
+            View
+          </button>
+          </a>
+                </div>
+             </div>
+
+        </div>
+        <!-- <div style="background-image: url('https://i.imgur.com/vjETozp.jpeg')" class="block w-full h-screen bg-center bg-cover"></div> -->
+      <div
+        class="absolute w-full left-0 bottom-0 pb-10 text-center text-white block bg-gradient-to-t from-black">
+      </div>
+    </div>
+  </div>
+
+  <!--Carousel controls - prev item-->
+  <button
+    class="absolute bottom-0 left-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+    type="button"
+    data-te-target="#carouselExampleCaptions"
+    data-te-slide="prev">
+    <span class="inline-block h-8 w-8">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="h-6 w-6">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M15.75 19.5L8.25 12l7.5-7.5" />
+      </svg>
+    </span>
+    <span
+      class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+      >Previous</span
+    >
+  </button>
+  <!--Carousel controls - next item-->
+  <button
+    class="absolute bottom-0 right-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+    type="button"
+    data-te-target="#carouselExampleCaptions"
+    data-te-slide="next">
+    <span class="inline-block h-8 w-8">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="h-6 w-6">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+      </svg>
+    </span>
+    <span
+      class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+      >Next</span
+    >
+  </button>
+</div>
+
+
+
+
     <!-- <script src="scripts/main.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
   </body>
 </html>
