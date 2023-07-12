@@ -5,7 +5,19 @@
     <title>Clemson Build</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.cdnfonts.com/css/univers-lt-std" rel="stylesheet"></link>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              univers: ['"Univers LT Std"', "sans-serif"],
+            },
+          }
+        }
+      }
+    </script>
     <style>
       body {
         background: linear-gradient(-45deg, #ee7752, #e7973c, #ab23d5, #9a23d5);
@@ -27,22 +39,150 @@
           background-position: 0% 50%;
         }
       }
+
+      input[type=radio] {
+        display: none;
+      }
+
+      .card {
+        position: absolute;
+        width: 60%;
+        height: 100%;
+        left: 0;
+        right: 0;
+        margin: auto;
+        transition: transform .4s ease;
+        cursor: pointer;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        max-height: 600px;
+        height: 100%;
+        transform-style: preserve-3d;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .cards {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        margin-bottom: 20px;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        object-fit: cover;
+      }
+
+      #item-1:checked ~ .cards #project-3, #item-2:checked ~ .cards #project-1, #item-3:checked ~ .cards #project-2 {
+        transform: translatex(-40%) scale(.8);
+        opacity: .4;
+        z-index: 0;
+      }
+
+      #item-1:checked ~ .cards #project-2, #item-2:checked ~ .cards #project-3, #item-3:checked ~ .cards #project-1 {
+        transform: translatex(40%) scale(.8);
+        opacity: .4;
+        z-index: 0;
+      }
+
+      #item-1:checked ~ .cards #project-1, #item-2:checked ~ .cards #project-2, #item-3:checked ~ .cards #project-3 {
+        transform: translatex(0) scale(1);
+        opacity: 1;
+        z-index: 1;
+        
+        img {
+          box-shadow: 0px 0px 5px 0px rgba(81, 81, 81, 0.47);
+        }
+      }
+
+      .upper-part {
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+        height: 36px;
+        overflow: hidden;
+      }
+
+      .sub-line {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      .subtitle, .time {
+        font-size: 12px;
+        line-height: 16px;
+        color: #c6c5c6;
+      }
     </style>
   </head>
   <body>
+  <!-- Hero Section -->
     <div class="mt-56 mx-auto w-fit">
-      <h1 class="text-6xl font-black text-center max-w-[750px]">A community of builders at Clemson University</h1>
-      <p class="mt-4 mx-auto text-lg font-light text-center max-w-[600px]">Connect with other students leveraging their skills build and iterate on all different kinds of projects.</p>
+      <h1 class="text-5xl font-black font-univers text-center max-w-[900px]">A community of builders at Clemson University</h1>
+      <p class="mt-4 mx-auto text-lg font-univers leading-wider text-center max-w-[600px]">Connect with other students leveraging their skills to build and iterate on all different kinds of projects.</p>
       <div class="mt-8 flex gap-x-4 justify-center">
-        <button class="transition ease-in-out delay-110 hover:-translate-y-1 hover:scale-101 bg-orange-500 shadow-lg rounded-lg font-bold px-5 py-2 text-lg text-white">
+        <button class="transition ease-in-out delay-110 hover:-translate-y-1 hover:scale-101 bg-orange-500 shadow-lg rounded-xl font-bold font-univers px-5 py-2 text-lg text-white">
           Join
         </button>
-        <button class="transition ease-in-out delay-110 hover:-translate-y-1 hover:scale-101 border border-white shadow-lg rounded-lg font-bold px-5 py-2 text-lg text-white">
+        <button class="transition ease-in-out delay-110 hover:-translate-y-1 hover:scale-101 border border-white shadow-xl rounded-lg font-bold font-univers px-5 py-2 text-lg text-white">
           Learn More
         </button>
       </div>
     </div>
 
+  <!-- Featured Projects Section -->
+    <div class="mt-[16.5rem] mx-auto max-w-[1280px] h-[700px]">
+      <div class="container">
+        <input type="radio" name="slider" id="item-1" checked>
+        <input type="radio" name="slider" id="item-2">
+        <input type="radio" name="slider" id="item-3">
+        <div class="cards">
+          <label class="card" for="item-1" id="project-1">
+            <img src="https://i.imgur.com/WvOYL0Z.jpg" alt="project 1">
+            <div class="py-4 bg-black/50 w-full flex-col justify-center rounded-br-[10px] rounded-bl-[10px]">
+              <h3 class="text-2xl font-black font-univers text-center">Stockpile</h3>
+              <p class="mt-2 text-md font-regular font-univers leading-wider text-center">By: Joey Meere</p>
+              <button class="mt-4 mx-auto block transition ease-in-out delay-110 hover:-translate-y-1 hover:scale-101 border border-white shadow-xl rounded-lg font-bold font-univers px-5 py-2 text-sm text-white">
+                View
+              </button>
+            </div>
+          </label>
+          <label class="card" for="item-2" id="project-2">
+            <img src="https://i.imgur.com/vjETozp.jpg" alt="Project 2">
+            <div class="py-4 bg-black/50 w-full flex-col justify-center rounded-br-[10px] rounded-bl-[10px]">
+              <h3 class="text-2xl font-black font-univers text-center">Elytra</h3>
+              <p class="mt-2 text-md font-regular font-univers leading-wider text-center">By: Max Koon</p>
+              <button class="mt-4 mx-auto block transition ease-in-out delay-110 hover:-translate-y-1 hover:scale-101 border border-white shadow-xl rounded-lg font-bold font-univers px-5 py-2 text-sm text-white">
+                View
+              </button>
+            </div>
+          </label>
+          <label class="card" for="item-3" id="project-3">
+            <img src="https://i.imgur.com/IquZXV3.jpg" alt="Project 3">
+            <div class="py-4 bg-black/50 w-full flex-col justify-center rounded-br-[10px] rounded-bl-[10px]">
+              <h3 class="text-2xl font-black font-univers text-center">CUFries</h3>
+              <p class="mt-2 text-md font-regular font-univers leading-wider text-center">By: Max Koon, David Bootle & Joey Meere</p>
+              <button class="mt-4 mx-auto block transition ease-in-out delay-110 hover:-translate-y-1 hover:scale-101 border border-white shadow-xl rounded-lg font-bold font-univers px-5 py-2 text-sm text-white">
+                View
+              </button>
+            </div>
+          </label>
+        </div>
+      </div>
+    </div>
     <!-- <script src="scripts/main.js"></script>-->
   </body>
 </html>
